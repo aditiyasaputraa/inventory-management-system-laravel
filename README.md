@@ -2,6 +2,8 @@
 
 Sistem Inventaris Barang berbasis web yang dikembangkan menggunakan Laravel untuk membantu pengelolaan data barang, kategori, supplier, transaksi barang masuk dan barang keluar secara lebih terstruktur dan efisien.
 
+![Dashboard](screenshots/Screenshot%202026-06-19%20025332.png)
+
 ## 🚀 Fitur Utama
 
 ### Dashboard
