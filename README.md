@@ -70,32 +70,6 @@ Sistem Inventaris Barang berbasis web yang dikembangkan menggunakan Laravel untu
 * Laravel Excel
 * Simple QR Code
 
-## 📸 Tampilan Sistem
-
-### Dashboard
-
-Tambahkan screenshot dashboard di sini.
-
-### Data Barang
-
-Tambahkan screenshot data barang di sini.
-
-### Barang Masuk
-
-Tambahkan screenshot barang masuk di sini.
-
-### Barang Keluar
-
-Tambahkan screenshot barang keluar di sini.
-
-### Laporan
-
-Tambahkan screenshot laporan di sini.
-
-### Manajemen Pengguna
-
-Tambahkan screenshot halaman pengguna di sini.
-
 ## ⚙️ Instalasi
 
 Clone repository:
