@@ -15,7 +15,44 @@
             + Tambah Barang
         </a>
     </div>
+<form method="GET" action="{{ route('items.index') }}" class="bg-white rounded-2xl border border-gray-200 p-4">
+    <div class="grid grid-cols-1 md:grid-cols-4 gap-4">
+        <input type="text"
+               name="search"
+               value="{{ request('search') }}"
+               placeholder="Cari kode / nama barang..."
+               class="rounded-xl border-gray-300 text-sm">
 
+        <select name="category_id" class="rounded-xl border-gray-300 text-sm">
+            <option value="">Semua Kategori</option>
+            @foreach($categories as $category)
+                <option value="{{ $category->id }}" {{ request('category_id') == $category->id ? 'selected' : '' }}>
+                    {{ $category->nama_kategori }}
+                </option>
+            @endforeach
+        </select>
+
+        <select name="supplier_id" class="rounded-xl border-gray-300 text-sm">
+            <option value="">Semua Supplier</option>
+            @foreach($suppliers as $supplier)
+                <option value="{{ $supplier->id }}" {{ request('supplier_id') == $supplier->id ? 'selected' : '' }}>
+                    {{ $supplier->nama_supplier }}
+                </option>
+            @endforeach
+        </select>
+
+        <div class="flex gap-2">
+            <button type="submit" class="bg-blue-600 text-white px-4 py-2 rounded-xl text-sm font-medium">
+                Filter
+            </button>
+
+            <a href="{{ route('items.index') }}"
+               class="bg-gray-100 text-gray-700 px-4 py-2 rounded-xl text-sm font-medium">
+                Reset
+            </a>
+        </div>
+    </div>
+</form>
     @if(session('success'))
         <div class="bg-green-100 text-green-700 px-4 py-3 rounded-xl">
             {{ session('success') }}
@@ -44,7 +81,7 @@
                         <td>
                             @if($item->gambar)
                                 <img src="{{ asset('storage/'.$item->gambar) }}"
-                                     class="w-16 h-16 object-cover rounded-lg border"
+                                     class="w-16 h-16 object-cover rounded-lg border">
                             @else
                                 <div class="w-12 h-12 rounded-xl bg-gray-100 flex items-center justify-center text-xs text-gray-400">
                                     No Img
@@ -72,21 +109,28 @@
                             @endif
                         </td>
                         <td class="text-right">
+
+                            <a href="{{ route('items.qrcode', $item->id) }}"
+                                class="text-green-600 font-medium mr-3">
+                                QR
+                            </a>
+
                             <a href="{{ route('items.edit', $item->id) }}"
-                               class="text-blue-600 font-medium mr-3">
+                                class="text-blue-600 font-medium mr-3">
                                 Edit
                             </a>
 
                             <form action="{{ route('items.destroy', $item->id) }}"
-                                  method="POST"
-                                  class="inline"
-                                  onsubmit="return confirm('Yakin ingin menghapus barang ini?')">
+                                    method="POST"
+                                    class="inline"
+                                    onsubmit="return confirm('Yakin ingin menghapus barang ini?')">
                                 @csrf
                                 @method('DELETE')
                                 <button type="submit" class="text-red-600 font-medium">
                                     Hapus
                                 </button>
                             </form>
+
                         </td>
                     </tr>
                 @empty

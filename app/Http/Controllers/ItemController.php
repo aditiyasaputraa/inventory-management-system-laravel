@@ -6,14 +6,31 @@ use App\Models\Item;
 use App\Models\Category;
 use App\Models\Supplier;
 use Illuminate\Http\Request;
+use SimpleSoftwareIO\QrCode\Facades\QrCode;
 
 class ItemController extends Controller
 {
-    public function index()
+    public function index(Request $request)
     {
-        $items = Item::with(['category', 'supplier'])->latest()->paginate(10);
+        $categories = Category::all();
+        $suppliers = Supplier::all();
 
-        return view('items.index', compact('items'));
+        $items = Item::with(['category', 'supplier'])
+            ->when($request->search, function ($query, $search) {
+                $query->where('nama_barang', 'like', '%' . $search . '%')
+                    ->orWhere('kode_barang', 'like', '%' . $search . '%');
+            })
+            ->when($request->category_id, function ($query, $categoryId) {
+                $query->where('category_id', $categoryId);
+            })
+            ->when($request->supplier_id, function ($query, $supplierId) {
+                $query->where('supplier_id', $supplierId);
+            })
+            ->latest()
+            ->paginate(10)
+            ->withQueryString();
+
+        return view('items.index', compact('items', 'categories', 'suppliers'));
     }
 
     public function create()
@@ -101,5 +118,10 @@ class ItemController extends Controller
         $item->delete();
 
         return redirect()->route('items.index')->with('success', 'Data barang berhasil dihapus.');
+    }
+
+    public function qrCode(Item $item)
+    {
+        return view('items.qrcode', compact('item'));
     }
 }

@@ -46,13 +46,15 @@
             <a href="#" class="flex items-center gap-3 px-3 py-2 rounded-lg text-gray-600 hover:bg-gray-100">
                 Permintaan Barang
             </a>
-            <a href="#" class="flex items-center gap-3 px-3 py-2 rounded-lg text-gray-600 hover:bg-gray-100">
+            <a href="{{ route('items.index') }}"
+            class="flex items-center gap-3 px-3 py-2 rounded-lg text-gray-600 hover:bg-gray-100">
                 QR Code Barang
             </a>
 
             <p class="text-xs font-semibold text-gray-400 px-3 pt-6 mb-2">SYSTEM</p>
 
-            <a href="#" class="flex items-center gap-3 px-3 py-2 rounded-lg text-gray-600 hover:bg-gray-100">
+            <a href="{{ route('laporan.index') }}"
+                class="flex items-center gap-3 px-3 py-2 rounded-lg text-gray-600 hover:bg-gray-100">
                 Laporan
             </a>
             <a href="#" class="flex items-center gap-3 px-3 py-2 rounded-lg text-gray-600 hover:bg-gray-100">
