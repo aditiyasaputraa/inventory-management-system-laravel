@@ -149,24 +149,9 @@ npm run dev
 * Melihat dashboard
 * Mengakses laporan
 
-## 🎯 Tujuan Pengembangan
-
-Project ini dibuat sebagai portofolio pengembangan aplikasi web berbasis Laravel untuk menunjukkan kemampuan dalam:
-
-* Backend Development
-* Database Management
-* CRUD Operations
-* Authentication & Authorization
-* Role Based Access Control
-* Reporting System
-* Inventory Management
-
 ## 👨‍💻 Developer
 
 **Aditiya Saputra**
 
 Mahasiswa Teknologi Informasi
 Universitas Bina Sarana Informatika (UBSI)
-
-GitHub:
-https://github.com/aditiyasaputraa
